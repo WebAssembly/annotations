@@ -8,7 +8,15 @@ exception Syntax = Script.Syntax
 let parse' name lexbuf start =
   lexbuf.Lexing.lex_curr_p <-
     {lexbuf.Lexing.lex_curr_p with Lexing.pos_fname = name};
-  try start Lexer.token lexbuf
+  Annot.clear ();
+  try
+    let result = start Lexer.token lexbuf in
+    let annots = Annot.get_all () in
+    if not (Annot.NameMap.is_empty annots) then
+      let annot = List.hd (snd (Annot.NameMap.choose annots)) in
+      raise (Custom.Syntax (annot.Source.at, "misplaced annotation"))
+    else
+      result
   with Syntax (region, s) ->
     let region' = if region <> Source.no_region then region else
       {Source.left = Lexer.convert_pos lexbuf.Lexing.lex_start_p;

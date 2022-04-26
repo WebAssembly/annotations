@@ -620,30 +620,59 @@ let global off i g =
   Node ("global $" ^ nat (off + i), global_type gtype :: list instr ginit.it)
 
 
-(* Modules *)
+(* Custom section *)
+
+let custom_section m place (module S : Custom.Section) =
+  if Custom.(compare_place (S.Handler.place S.it) place) <= +1 then
+    Some (S.Handler.arrange m S.it)
+  else
+    None
+
+(* Module *)
+
+let rec iterate f xs =
+  match xs with
+  | [] -> [], []
+  | x::xs' ->
+    match f x with
+    | Some y -> let ys', xs'' = iterate f xs' in y::ys', xs''
+    | None -> [], xs
 
 let var_opt = function
   | None -> ""
   | Some x -> " " ^ x.it
 
-let module_with_var_opt x_opt m =
+let module_with_var_opt x_opt (m, cs) =
   let fx = ref 0 in
   let tx = ref 0 in
   let mx = ref 0 in
   let gx = ref 0 in
   let imports = list (import fx tx mx gx) m.it.imports in
+  let open Custom in
   Node ("module" ^ var_opt x_opt,
+    let secs, cs = iterate (custom_section m (Before Type)) cs in secs @
     listi typedef m.it.types @
+    let secs, cs = iterate (custom_section m (Before Import)) cs in secs @
     imports @
+    let secs, cs = iterate (custom_section m (Before Table)) cs in secs @
     listi (table !tx) m.it.tables @
+    let secs, cs = iterate (custom_section m (Before Memory)) cs in secs @
     listi (memory !mx) m.it.memories @
+    let secs, cs = iterate (custom_section m (Before Global)) cs in secs @
     listi (global !gx) m.it.globals @
-    listi (func_with_index !fx) m.it.funcs @
+    let secs, cs = iterate (custom_section m (Before Export)) cs in secs @
     list export m.it.exports @
+    let secs, cs = iterate (custom_section m (Before Start)) cs in secs @
     opt start m.it.start @
+    let secs, cs = iterate (custom_section m (Before Elem)) cs in secs @
     listi elem m.it.elems @
-    listi data m.it.datas
+    let secs, cs = iterate (custom_section m (Before Code)) cs in secs @
+    listi (func_with_index !fx) m.it.funcs @
+    let secs, cs = iterate (custom_section m (Before Data)) cs in secs @
+    listi data m.it.datas @
+    let secs, cs = iterate (custom_section m (After Data)) cs in secs
   )
+
 
 let binary_module_with_var_opt x_opt bs =
   Node ("module" ^ var_opt x_opt ^ " binary", break_bytes bs)
@@ -651,7 +680,8 @@ let binary_module_with_var_opt x_opt bs =
 let quoted_module_with_var_opt x_opt s =
   Node ("module" ^ var_opt x_opt ^ " quote", break_string s)
 
-let module_ = module_with_var_opt None
+let module_with_custom = module_with_var_opt None
+let module_ m = module_with_custom (m, [])
 
 
 (* Scripts *)
@@ -676,20 +706,21 @@ let definition mode x_opt def =
     | `Textual ->
       let rec unquote def =
         match def.it with
-        | Textual m -> m
-        | Encoded (_, bs) -> Decode.decode "" bs
+        | Textual (m, cs) -> m, cs
+        | Encoded (_, bs) -> Decode.decode_with_custom "" bs
         | Quoted (_, s) -> unquote (Parse.string_to_module s)
       in module_with_var_opt x_opt (unquote def)
     | `Binary ->
       let rec unquote def =
         match def.it with
-        | Textual m -> Encode.encode m
-        | Encoded (_, bs) -> Encode.encode (Decode.decode "" bs)
+        | Textual (m, cs) -> Encode.encode_with_custom (m, cs)
+        | Encoded (_, bs) ->
+          Encode.encode_with_custom (Decode.decode_with_custom "" bs)
         | Quoted (_, s) -> unquote (Parse.string_to_module s)
       in binary_module_with_var_opt x_opt (unquote def)
     | `Original ->
       match def.it with
-      | Textual m -> module_with_var_opt x_opt m
+      | Textual (m, cs) -> module_with_var_opt x_opt (m, cs)
       | Encoded (_, bs) -> binary_module_with_var_opt x_opt bs
       | Quoted (_, s) -> quoted_module_with_var_opt x_opt s
   with Parse.Syntax _ ->
