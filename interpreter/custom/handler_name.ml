@@ -28,6 +28,8 @@ let place _fmt = After last
 
 (* Decoding *)
 
+(* TODO: make Decode module reusable instead of duplicating code *)
+
 type stream = {bytes : string; pos : int ref}
 
 exception EOS
@@ -140,6 +142,8 @@ let decode _m custom =
 
 
 (* Encoding *)
+
+(* TODO: make Encode module reusable *)
 
 let encode_byte buf b =
   Buffer.add_char buf (Char.chr b)
