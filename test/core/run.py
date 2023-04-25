@@ -62,8 +62,7 @@ class RunTests(unittest.TestCase):
         with open(actualFile) as actual:
           expectText = expect.read()
           actualText = actual.read()
-          self.maxDiff = 2000
-          self.assertEqual(expectText, actualText)
+      self.assertEqual(expectText, actualText)
 
   def _runTestFile(self, inputPath):
     dir, inputFile = os.path.split(inputPath)
