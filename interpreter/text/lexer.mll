@@ -728,9 +728,6 @@ and annot start = parse
       let ann = Annot.{name = Utf8.decode n; items} @@ r in
       (Annot.Annot ann @@ r) :: annot start lexbuf }
 
-  | reserved as s
-    { let r = region lexbuf in
-      (Annot.Atom s @@ r) :: annot start lexbuf }
   | nat as s
     { let r = region lexbuf in
       (Annot.Nat s @@ r) :: annot start lexbuf }
@@ -746,6 +743,9 @@ and annot start = parse
   | string as s
     { let r = region lexbuf in
       (Annot.String (string s) @@ r) :: annot start lexbuf }
+  | reserved as s
+    { let r = region lexbuf in
+      (Annot.Atom s @@ r) :: annot start lexbuf }
   | '"'character*('\n'|eof)
     { error lexbuf "unclosed string literal" }
   | '"'character*['\x00'-'\x09''\x0b'-'\x1f''\x7f']
