@@ -458,7 +458,7 @@ let run_assertion ass =
     (match ignore (run_definition def) with
     | exception Custom.Syntax (_, msg) ->
       assert_message ass.at "annotation parsing" msg re
-    | _ -> Assert.error ass.at "expected decoding/parsing error"
+    | _ -> Assert.error ass.at "expected custom decoding/parsing error"
     )
 
   | AssertInvalid (def, re) ->
