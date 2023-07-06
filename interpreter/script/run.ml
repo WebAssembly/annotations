@@ -480,7 +480,7 @@ let run_assertion ass =
     with
     | exception Custom.Invalid (_, msg) ->
       assert_message ass.at "custom validation" msg re
-    | _ -> Assert.error ass.at "expected validation error"
+    | _ -> Assert.error ass.at "expected custom validation error"
     )
 
   | AssertUnlinkable (def, re) ->
