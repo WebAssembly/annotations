@@ -464,8 +464,8 @@ let run_assertion ass =
   | AssertInvalid (def, re) ->
     trace "Asserting invalid...";
     (match
-      let m, _ = run_definition def in
-      Valid.check_module m
+      let m, cs = run_definition def in
+      Valid.check_module_with_custom (m, cs)
     with
     | exception Valid.Invalid (_, msg) ->
       assert_message ass.at "validation" msg re
