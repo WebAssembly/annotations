@@ -91,6 +91,10 @@ let nat32 s at =
 let name s at =
   try Utf8.decode s with Utf8.Utf8 -> error at "malformed UTF-8 encoding"
 
+let var s at =
+  try ignore (Utf8.decode s); s @@ at
+  with Utf8.Utf8 -> error at "malformed UTF-8 encoding"
+
 
 (* Symbolic variables *)
 
@@ -123,9 +127,24 @@ let force_locals (c : context) =
 let enter_func (c : context) =
   {c with labels = VarMap.empty; locals = empty ()}
 
+let print_char = function
+  | 0x09 -> "\\t"
+  | 0x0a -> "\\n"
+  | 0x22 -> "\\\""
+  | 0x5c -> "\\\\"
+  | c when 0x20 <= c && c < 0x7f -> String.make 1 (Char.chr c)
+  | c -> Printf.sprintf "\\u{%02x}" c
+
+let print x =
+  "$" ^
+  if String.for_all (fun c -> Lib.Char.is_alphanum_ascii c || c = '_') x.it
+  then x.it
+  else "\"" ^ String.concat "" (List.map print_char (Utf8.decode x.it)) ^ "\""
+
+
 let lookup category space x =
   try VarMap.find x.it space.map
-  with Not_found -> error x.at ("unknown " ^ category ^ " " ^ x.it)
+  with Not_found -> error x.at ("unknown " ^ category ^ " " ^ print x)
 
 let type_ (c : context) x = lookup "type" c.types.space x
 let func (c : context) x = lookup "function" c.funcs x
@@ -137,7 +156,7 @@ let elem (c : context) x = lookup "elem segment" c.elems x
 let data (c : context) x = lookup "data segment" c.datas x
 let label (c : context) x =
   try VarMap.find x.it c.labels
-  with Not_found -> error x.at ("unknown label " ^ x.it)
+  with Not_found -> error x.at ("unknown label " ^ print x)
 
 let func_type (c : context) x =
   try (Lib.List32.nth c.types.list x.it).it
@@ -154,7 +173,7 @@ let anon category space n =
 let bind category space x =
   let i = anon category space 1l in
   if VarMap.mem x.it space.map then
-    error x.at ("duplicate " ^ category ^ " " ^ x.it);
+    error x.at ("duplicate " ^ category ^ " " ^ print x);
   space.map <- VarMap.add x.it i space.map;
   i
 
@@ -348,7 +367,7 @@ num_list:
 
 var :
   | NAT { let at = at () in fun c lookup -> nat32 $1 at @@ at }
-  | VAR { let at = at () in fun c lookup -> lookup c ($1 @@ at) @@ at }
+  | VAR { let at = at () in fun c lookup -> lookup c (var $1 at) @@ at }
 
 var_list :
   | /* empty */ { fun c lookup -> [] }
@@ -359,7 +378,7 @@ bind_var_opt :
   | bind_var { fun c anon bind -> bind c $1 }  /* Sugar */
 
 bind_var :
-  | VAR { $1 @@ at () }
+  | VAR { var $1 (at ()) }
 
 labeling_opt :
   | /* empty */
@@ -1013,7 +1032,7 @@ module_fields1 :
 
 module_var_opt :
   | /* empty */ { None }
-  | VAR { Some ($1 @@ at ()) }  /* Sugar */
+  | VAR { Some (var $1 (at ())) }  /* Sugar */
 
 module_ :
   | LPAR MODULE module_var_opt module_fields RPAR
@@ -1043,7 +1062,7 @@ inline_module1 :  /* Sugar */
 
 script_var_opt :
   | /* empty */ { None }
-  | VAR { Some ($1 @@ at ()) }  /* Sugar */
+  | VAR { Some (var $1 (at ())) }  /* Sugar */
 
 script_module :
   | module_ { $1 }
