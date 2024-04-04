@@ -1,9 +1,3 @@
-(module $abc)
-(module $03)
-(module $!?@#a$%^&*b-+_.:9'`|/\<=>~)
-(module $" random \t \n stuff ")
-(module $" ")
-
 (module
   (func $fg) (func (call $fg))
   (func $03) (func (call $03))
