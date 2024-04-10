@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Instructions &#8212; WebAssembly 2.0 + custom annotations (Draft 2023-04-25)</title>
+    <title>Instructions &#8212; WebAssembly 2.0 + custom annotations (Draft 2024-04-10)</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -23,8 +23,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   <div class="document">
@@ -759,65 +760,73 @@ Lexically, an <span class="math notranslate nohighlight">\(\href{../text/instruc
   \def\mathdef3284#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3284{f32x4.abs} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{abs}}\\ &amp;&amp;|&amp;
   \def\mathdef3285#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3285{f32x4.neg} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{neg}}\\ &amp;&amp;|&amp;
   \def\mathdef3286#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3286{f32x4.sqrt} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sqrt}}\\ &amp;&amp;|&amp;
-  \def\mathdef3287#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3287{f32x4.add} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{add}}\\ &amp;&amp;|&amp;
-  \def\mathdef3288#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3288{f32x4.sub} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sub}}\\ &amp;&amp;|&amp;
-  \def\mathdef3289#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3289{f32x4.mul} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{mul}}\\ &amp;&amp;|&amp;
-  \def\mathdef3290#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3290{f32x4.div} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{div}}\\ &amp;&amp;|&amp;
-  \def\mathdef3291#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3291{f32x4.min} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{min}}\\ &amp;&amp;|&amp;
-  \def\mathdef3292#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3292{f32x4.max} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{max}}\\ &amp;&amp;|&amp;
-  \def\mathdef3293#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3293{f32x4.pmin} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmin}}\\ &amp;&amp;|&amp;
-  \def\mathdef3294#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3294{f32x4.pmax} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmax}}\\
+  \def\mathdef3287#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3287{f32x4.ceil} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{ceil}}\\ &amp;&amp;|&amp;
+  \def\mathdef3288#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3288{f32x4.floor} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{floor}}\\ &amp;&amp;|&amp;
+  \def\mathdef3289#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3289{f32x4.trunc} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\\ &amp;&amp;|&amp;
+  \def\mathdef3290#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3290{f32x4.nearest} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{nearest}}\\ &amp;&amp;|&amp;
+  \def\mathdef3291#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3291{f32x4.add} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{add}}\\ &amp;&amp;|&amp;
+  \def\mathdef3292#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3292{f32x4.sub} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sub}}\\ &amp;&amp;|&amp;
+  \def\mathdef3293#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3293{f32x4.mul} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{mul}}\\ &amp;&amp;|&amp;
+  \def\mathdef3294#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3294{f32x4.div} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{div}}\\ &amp;&amp;|&amp;
+  \def\mathdef3295#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3295{f32x4.min} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{min}}\\ &amp;&amp;|&amp;
+  \def\mathdef3296#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3296{f32x4.max} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{max}}\\ &amp;&amp;|&amp;
+  \def\mathdef3297#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3297{f32x4.pmin} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmin}}\\ &amp;&amp;|&amp;
+  \def\mathdef3298#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3298{f32x4.pmax} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmax}}\\
 \end{array}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
 \phantom{\def\mathdef2802#1{{}}\mathdef2802{instruction}} &amp; \phantom{\href{../text/instructions.html#text-plaininstr}{\mathtt{plaininstr}}_I} &amp;\phantom{::=}&amp; \phantom{averylonginstructionnameforvectext} &amp;&amp; \phantom{vechasreallylonginstructionnames} \\[-2ex] &amp;&amp;|&amp;
-  \def\mathdef3295#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3295{f64x2.abs} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{abs}}\\ &amp;&amp;|&amp;
-  \def\mathdef3296#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3296{f64x2.neg} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{neg}}\\ &amp;&amp;|&amp;
-  \def\mathdef3297#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3297{f64x2.sqrt} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sqrt}}\\ &amp;&amp;|&amp;
-  \def\mathdef3298#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3298{f64x2.add} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{add}}\\ &amp;&amp;|&amp;
-  \def\mathdef3299#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3299{f64x2.sub} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sub}}\\ &amp;&amp;|&amp;
-  \def\mathdef3300#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3300{f64x2.mul} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{mul}}\\ &amp;&amp;|&amp;
-  \def\mathdef3301#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3301{f64x2.div} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{div}}\\ &amp;&amp;|&amp;
-  \def\mathdef3302#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3302{f64x2.min} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{min}}\\ &amp;&amp;|&amp;
-  \def\mathdef3303#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3303{f64x2.max} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{max}}\\ &amp;&amp;|&amp;
-  \def\mathdef3304#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3304{f64x2.pmin} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmin}}\\ &amp;&amp;|&amp;
-  \def\mathdef3305#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3305{f64x2.pmax} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmax}}\\
+  \def\mathdef3299#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3299{f64x2.abs} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{abs}}\\ &amp;&amp;|&amp;
+  \def\mathdef3300#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3300{f64x2.neg} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{neg}}\\ &amp;&amp;|&amp;
+  \def\mathdef3301#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3301{f64x2.sqrt} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sqrt}}\\ &amp;&amp;|&amp;
+  \def\mathdef3302#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3302{f64x2.ceil} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{ceil}}\\ &amp;&amp;|&amp;
+  \def\mathdef3303#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3303{f64x2.floor} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{floor}}\\ &amp;&amp;|&amp;
+  \def\mathdef3304#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3304{f64x2.trunc} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\\ &amp;&amp;|&amp;
+  \def\mathdef3305#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3305{f64x2.nearest} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{nearest}}\\ &amp;&amp;|&amp;
+  \def\mathdef3306#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3306{f64x2.add} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{add}}\\ &amp;&amp;|&amp;
+  \def\mathdef3307#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3307{f64x2.sub} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{sub}}\\ &amp;&amp;|&amp;
+  \def\mathdef3308#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3308{f64x2.mul} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{mul}}\\ &amp;&amp;|&amp;
+  \def\mathdef3309#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3309{f64x2.div} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{div}}\\ &amp;&amp;|&amp;
+  \def\mathdef3310#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3310{f64x2.min} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{min}}\\ &amp;&amp;|&amp;
+  \def\mathdef3311#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3311{f64x2.max} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{max}}\\ &amp;&amp;|&amp;
+  \def\mathdef3312#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3312{f64x2.pmin} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmin}}\\ &amp;&amp;|&amp;
+  \def\mathdef3313#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3313{f64x2.pmax} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{pmax}}\\
 \end{array}\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
 \phantom{\def\mathdef2802#1{{}}\mathdef2802{instruction}} &amp; \phantom{\href{../text/instructions.html#text-plaininstr}{\mathtt{plaininstr}}_I} &amp;\phantom{::=}&amp; \phantom{averylonginstructionnameforvectext} &amp;&amp; \phantom{vechasreallylonginstructionnames} \\[-2ex] &amp;&amp;|&amp;
-  \def\mathdef3306#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3306{i32x4.trunc\_sat\_f32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f32x4\_s}\\ &amp;&amp;|&amp;
-  \def\mathdef3307#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3307{i32x4.trunc\_sat\_f32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f32x4\_u}\\ &amp;&amp;|&amp;
-  \def\mathdef3308#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3308{i32x4.trunc\_sat\_f64x2\_s\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f64x2\_s\_zero}\\ &amp;&amp;|&amp;
-  \def\mathdef3309#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3309{i32x4.trunc\_sat\_f64x2\_u\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f64x2\_u\_zero}\\ &amp;&amp;|&amp;
-  \def\mathdef3310#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3310{f32x4.convert\_i32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-numeric}{\mathsf{convert}}\mathsf{\_i32x4\_s}\\ &amp;&amp;|&amp;
-  \def\mathdef3311#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3311{f32x4.convert\_i32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-numeric}{\mathsf{convert}}\mathsf{\_i32x4\_u}\\ &amp;&amp;|&amp;
-  \def\mathdef3312#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3312{f64x2.convert\_low\_i32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{convert}}\mathsf{\_low\_i32x4\_s}\\  &amp;&amp;|&amp;
-  \def\mathdef3313#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3313{f64x2.convert\_low\_i32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{convert}}\mathsf{\_low\_i32x4\_u}\\ &amp;&amp;|&amp;
-  \def\mathdef3314#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3314{f32x4.demote\_f64x2\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{demote}}\mathsf{\_f64x2\_zero}\\ &amp;&amp;|&amp;
-  \def\mathdef3315#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3315{f64x2.promote\_low\_f32x4} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{promote}}\mathsf{\_low\_f32x4}\\
+  \def\mathdef3314#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3314{i32x4.trunc\_sat\_f32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f32x4\_s}\\ &amp;&amp;|&amp;
+  \def\mathdef3315#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3315{i32x4.trunc\_sat\_f32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f32x4\_u}\\ &amp;&amp;|&amp;
+  \def\mathdef3316#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3316{i32x4.trunc\_sat\_f64x2\_s\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f64x2\_s\_zero}\\ &amp;&amp;|&amp;
+  \def\mathdef3317#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3317{i32x4.trunc\_sat\_f64x2\_u\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{i32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{trunc}}\mathsf{\_sat\_f64x2\_u\_zero}\\ &amp;&amp;|&amp;
+  \def\mathdef3318#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3318{f32x4.convert\_i32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-numeric}{\mathsf{convert}}\mathsf{\_i32x4\_s}\\ &amp;&amp;|&amp;
+  \def\mathdef3319#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3319{f32x4.convert\_i32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-numeric}{\mathsf{convert}}\mathsf{\_i32x4\_u}\\ &amp;&amp;|&amp;
+  \def\mathdef3320#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3320{f64x2.convert\_low\_i32x4\_s} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{convert}}\mathsf{\_low\_i32x4\_s}\\  &amp;&amp;|&amp;
+  \def\mathdef3321#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3321{f64x2.convert\_low\_i32x4\_u} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{convert}}\mathsf{\_low\_i32x4\_u}\\ &amp;&amp;|&amp;
+  \def\mathdef3322#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3322{f32x4.demote\_f64x2\_zero} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f32x4}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{demote}}\mathsf{\_f64x2\_zero}\\ &amp;&amp;|&amp;
+  \def\mathdef3323#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3323{f64x2.promote\_low\_f32x4} &amp;\Rightarrow&amp; \href{../syntax/types.html#syntax-valtype}{\mathsf{f64x2}}.\href{../syntax/instructions.html#syntax-instr-vec}{\mathsf{promote}}\mathsf{\_low\_f32x4}\\
 \end{array}\end{split}\]</div>
 </section>
 <section id="folded-instructions">
 <span id="text-foldedinstr"></span><span id="index-10"></span><h2>Folded Instructions<a class="headerlink" href="#folded-instructions" title="Permalink to this heading">¶</a></h2>
 <p>Instructions can be written as S-expressions by grouping them into <em>folded</em> form. In that notation, an instruction is wrapped in parentheses and optionally includes nested folded instructions to indicate its operands.</p>
-<p>In the case of <a class="reference internal" href="#text-instr-block"><span class="std std-ref">block instructions</span></a>, the folded form omits the <span class="math notranslate nohighlight">\(\def\mathdef3316#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3316{end}\)</span> delimiter.
-For <span class="math notranslate nohighlight">\(\href{../syntax/instructions.html#syntax-instr-control}{\mathsf{if}}\)</span> instructions, both branches have to be wrapped into nested S-expressions, headed by the keywords <span class="math notranslate nohighlight">\(\def\mathdef3317#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3317{then}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef3318#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3318{else}\)</span>.</p>
+<p>In the case of <a class="reference internal" href="#text-instr-block"><span class="std std-ref">block instructions</span></a>, the folded form omits the <span class="math notranslate nohighlight">\(\def\mathdef3324#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3324{end}\)</span> delimiter.
+For <span class="math notranslate nohighlight">\(\href{../syntax/instructions.html#syntax-instr-control}{\mathsf{if}}\)</span> instructions, both branches have to be wrapped into nested S-expressions, headed by the keywords <span class="math notranslate nohighlight">\(\def\mathdef3325#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3325{then}\)</span> and <span class="math notranslate nohighlight">\(\def\mathdef3326#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3326{else}\)</span>.</p>
 <p>The set of all phrases defined by the following abbreviations recursively forms the auxiliary syntactic class <span class="math notranslate nohighlight">\(\href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}\)</span>.
 Such a folded instruction can appear anywhere a regular instruction can.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{lllll}
 \def\mathdef2802#1{{}}\mathdef2802{instruction} &amp;
-  \def\mathdef3319#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3319{(}~\href{../text/instructions.html#text-plaininstr}{\mathtt{plaininstr}}~~\href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast~\def\mathdef3320#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3320{)}
+  \def\mathdef3327#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3327{(}~\href{../text/instructions.html#text-plaininstr}{\mathtt{plaininstr}}~~\href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast~\def\mathdef3328#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3328{)}
     &amp;\equiv\quad \href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast~~\href{../text/instructions.html#text-plaininstr}{\mathtt{plaininstr}} \\ &amp;
-  \def\mathdef3321#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3321{(}~\def\mathdef3322#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3322{block}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~\def\mathdef3323#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3323{)}
-    &amp;\equiv\quad \def\mathdef3324#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3324{block}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~~\def\mathdef3325#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3325{end} \\ &amp;
-  \def\mathdef3326#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3326{(}~\def\mathdef3327#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3327{loop}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~\def\mathdef3328#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3328{)}
-    &amp;\equiv\quad \def\mathdef3329#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3329{loop}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~~\def\mathdef3330#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3330{end} \\ &amp;
-  \def\mathdef3331#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3331{(}~\def\mathdef3332#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3332{if}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast
-    &amp;\hspace{-3ex} \def\mathdef3333#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3333{(}~\def\mathdef3334#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3334{then}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}_1^\ast~\def\mathdef3335#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3335{)}~~(\def\mathdef3336#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3336{(}~\def\mathdef3337#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3337{else}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}_2^\ast~\def\mathdef3338#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3338{)})^?~~\def\mathdef3339#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3339{)}
+  \def\mathdef3329#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3329{(}~\def\mathdef3330#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3330{block}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~\def\mathdef3331#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3331{)}
+    &amp;\equiv\quad \def\mathdef3332#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3332{block}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~~\def\mathdef3333#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3333{end} \\ &amp;
+  \def\mathdef3334#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3334{(}~\def\mathdef3335#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3335{loop}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~\def\mathdef3336#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3336{)}
+    &amp;\equiv\quad \def\mathdef3337#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3337{loop}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}^\ast~~\def\mathdef3338#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3338{end} \\ &amp;
+  \def\mathdef3339#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3339{(}~\def\mathdef3340#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3340{if}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}}~~\href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast
+    &amp;\hspace{-3ex} \def\mathdef3341#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3341{(}~\def\mathdef3342#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3342{then}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}_1^\ast~\def\mathdef3343#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3343{)}~~(\def\mathdef3344#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3344{(}~\def\mathdef3345#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3345{else}~~\href{../text/instructions.html#text-instr}{\mathtt{instr}}_2^\ast~\def\mathdef3346#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3346{)})^?~~\def\mathdef3347#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3347{)}
     \quad\equiv \\ &amp;\qquad
-      \href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast~~\def\mathdef3340#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3340{if}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}} &amp;\hspace{-1ex} \href{../text/instructions.html#text-instr}{\mathtt{instr}}_1^\ast~~\def\mathdef3341#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3341{else}~~(\href{../text/instructions.html#text-instr}{\mathtt{instr}}_2^\ast)^?~\def\mathdef3342#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3342{end} \\
+      \href{../text/instructions.html#text-foldedinstr}{\mathtt{foldedinstr}}^\ast~~\def\mathdef3348#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3348{if}~~\href{../text/instructions.html#text-label}{\mathtt{label}}~~\href{../text/instructions.html#text-blocktype}{\mathtt{blocktype}} &amp;\hspace{-1ex} \href{../text/instructions.html#text-instr}{\mathtt{instr}}_1^\ast~~\def\mathdef3349#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3349{else}~~(\href{../text/instructions.html#text-instr}{\mathtt{instr}}_2^\ast)^?~\def\mathdef3350#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3350{end} \\
 \end{array}\end{split}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -834,7 +843,7 @@ no additional syntactic or type-based checking is implied.</p>
 <section id="expressions">
 <span id="text-expr"></span><span id="index-11"></span><h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">¶</a></h2>
 <p>Expressions are written as instruction sequences.
-No explicit <span class="math notranslate nohighlight">\(\def\mathdef3343#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3343{end}\)</span> keyword is included, since they only occur in bracketed positions.</p>
+No explicit <span class="math notranslate nohighlight">\(\def\mathdef3351#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef3351{end}\)</span> keyword is included, since they only occur in bracketed positions.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
 \def\mathdef2802#1{{}}\mathdef2802{expression} &amp; \href{../text/instructions.html#text-expr}{\mathtt{expr}}_I &amp;::=&amp;
@@ -851,7 +860,7 @@ No explicit <span class="math notranslate nohighlight">\(\def\mathdef3343#1{\mbo
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2022, WebAssembly Community Group.
+      &#169;2022, WebAssembly Community Group.
       
     </div>
 
