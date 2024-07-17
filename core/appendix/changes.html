@@ -200,6 +200,26 @@ The following sections provide an overview of what has changed.</p>
 </aside>
 </section>
 </section>
+<section id="release-3-0">
+<h2>Release 3.0<a class="headerlink" href="#release-3-0" title="Permalink to this heading">¶</a></h2>
+<section id="custom-annotations">
+<h3>Custom annotations<a class="headerlink" href="#custom-annotations" title="Permalink to this heading">¶</a></h3>
+<p>Added generic syntax for custom annotations in the text format,
+mirroring the role of custom sections in the binary format. <a class="footnote-reference brackets" href="#proposal-annot" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../text/lexical.html#text-annot"><span class="std std-ref">Annotations</span></a> of the form <span class="math notranslate nohighlight">\(\def\mathdef79#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef79{(&#64;id~\dots)}\)</span> are allowed anywhere in the <a class="reference internal" href="../text/index.html#text"><span class="std std-ref">text format</span></a></p></li>
+<li><p><a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">Identifiers</span></a> can be escaped as <span class="math notranslate nohighlight">\(\def\mathdef80#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef80{&#64;&quot;\dots&quot;}\)</span> with arbitrary <a class="reference internal" href="../text/values.html#text-name"><span class="std std-ref">names</span></a></p></li>
+<li><p>Defined <a class="reference internal" href="custom.html#text-nameannot"><span class="std std-ref">name annotations</span></a> <span class="math notranslate nohighlight">\(\def\mathdef81#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef81{(&#64;name~&quot;\dots&quot;)}\)</span> for <a class="reference internal" href="custom.html#text-modulenameannot"><span class="std std-ref">module names</span></a>, <a class="reference internal" href="custom.html#text-funcnameannot"><span class="std std-ref">function names</span></a>, and <a class="reference internal" href="custom.html#text-localnameannot"><span class="std std-ref">local names</span></a></p></li>
+<li><p>Defined <a class="reference internal" href="custom.html#text-customannot"><span class="std std-ref">custom annotation</span></a> <span class="math notranslate nohighlight">\(\def\mathdef82#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef82{(&#64;custom~&quot;\dots&quot;)}\)</span> to represent arbitrary <a class="reference internal" href="../binary/modules.html#binary-customsec"><span class="std std-ref">custom sections</span></a> in the text format</p></li>
+</ul>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="proposal-annot" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">7</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://github.com/WebAssembly/annotations/tree/main/proposals/annotations/">https://github.com/WebAssembly/annotations/tree/main/proposals/annotations/</a></p>
+</aside>
+</aside>
+</section>
+</section>
 </section>
 
 

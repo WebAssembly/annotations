@@ -93,7 +93,7 @@ Such sections or annotations do not contribute to, or otherwise affect, the WebA
 However, they provide useful meta data that implementations can make use of to improve user experience or take compilation hints.</p>
 <section id="name-section">
 <span id="binary-namesec"></span><span id="index-1"></span><h2>Name Section<a class="headerlink" href="#name-section" title="Permalink to this heading">¶</a></h2>
-<p>The <em>name section</em> is a <a class="reference internal" href="../binary/modules.html#binary-customsec"><span class="std std-ref">custom section</span></a> whose name string is itself <span class="math notranslate nohighlight">\(\def\mathdef118#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef118{name}\)</span>.
+<p>The <em>name section</em> is a <a class="reference internal" href="../binary/modules.html#binary-customsec"><span class="std std-ref">custom section</span></a> whose name string is itself <span class="math notranslate nohighlight">\(\def\mathdef122#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef122{name}\)</span>.
 The name section should appear only once in a module, and only after the <a class="reference internal" href="../binary/modules.html#binary-datasec"><span class="std std-ref">data section</span></a>.</p>
 <p>The purpose of this section is to attach printable names to definitions in a module, which e.g. can be used by a debugger or when parts of the module are to be rendered in <a class="reference internal" href="../text/index.html#text"><span class="std std-ref">text form</span></a>.</p>
 <div class="admonition note">
@@ -112,15 +112,15 @@ Each subsection consists of a</p>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llcll}
-\def\mathdef79#1{{}}\mathdef79{name section} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesec}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{name section} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesec}} &amp;::=&amp;
   \href{../binary/modules.html#binary-section}{\mathtt{section}}_0(\href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}}) \\
-\def\mathdef79#1{{}}\mathdef79{name data} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}} &amp;::=&amp;
-  n{:}\href{../binary/values.html#binary-name}{\mathtt{name}} &amp; (\mathrel{\mbox{if}} n = \def\mathdef119#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef119{name}) \\ &amp;&amp;&amp;
+\def\mathdef83#1{{}}\mathdef83{name data} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namedata}} &amp;::=&amp;
+  n{:}\href{../binary/values.html#binary-name}{\mathtt{name}} &amp; (\mathrel{\mbox{if}} n = \def\mathdef123#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef123{name}) \\ &amp;&amp;&amp;
   \href{../appendix/custom.html#binary-modulenamesec}{\mathtt{modulenamesubsec}}^? \\ &amp;&amp;&amp;
   \href{../appendix/custom.html#binary-funcnamesec}{\mathtt{funcnamesubsec}}^? \\ &amp;&amp;&amp;
   \href{../appendix/custom.html#binary-localnamesec}{\mathtt{localnamesubsec}}^? \\
-\def\mathdef79#1{{}}\mathdef79{name subsection} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_N(\mathtt{B}) &amp;::=&amp;
-  N{:}\href{../binary/values.html#binary-byte}{\mathtt{byte}}~~\mathit{size}{:}\href{../binary/values.html#binary-int}{\def\mathdef84#1{{\mathtt{u}#1}}\mathdef84{\mathtt{32}}}~~\mathtt{B}
+\def\mathdef83#1{{}}\mathdef83{name subsection} &amp; \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_N(\mathtt{B}) &amp;::=&amp;
+  N{:}\href{../binary/values.html#binary-byte}{\mathtt{byte}}~~\mathit{size}{:}\href{../binary/values.html#binary-int}{\def\mathdef88#1{{\mathtt{u}#1}}\mathdef88{\mathtt{32}}}~~\mathtt{B}
     &amp; (\mathrel{\mbox{if}} \mathit{size} = ||\mathtt{B}||) \\
 \end{array}\end{split}\]</div>
 <p>The following subsection ids are used:</p>
@@ -151,9 +151,9 @@ It consists of a <a class="reference internal" href="../binary/conventions.html#
 Each index must be unique, but the assigned names need not be.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{name map} &amp; \href{../appendix/custom.html#binary-namemap}{\mathtt{namemap}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{name map} &amp; \href{../appendix/custom.html#binary-namemap}{\mathtt{namemap}} &amp;::=&amp;
   \href{../binary/conventions.html#binary-vec}{\mathtt{vec}}(\href{../appendix/custom.html#binary-namemap}{\mathtt{nameassoc}}) \\
-\def\mathdef79#1{{}}\mathdef79{name association} &amp; \href{../appendix/custom.html#binary-namemap}{\mathtt{nameassoc}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{name association} &amp; \href{../appendix/custom.html#binary-namemap}{\mathtt{nameassoc}} &amp;::=&amp;
   \href{../binary/modules.html#binary-index}{\mathtt{idx}}~\href{../binary/values.html#binary-name}{\mathtt{name}} \\
 \end{array}\end{split}\]</div>
 <p>An <em>indirect name map</em> assigns <a class="reference internal" href="../syntax/values.html#syntax-name"><span class="std std-ref">names</span></a> to a two-dimensional <a class="reference internal" href="../syntax/modules.html#syntax-index"><span class="std std-ref">index space</span></a>, where secondary indices are <em>grouped</em> by primary indices.
@@ -161,9 +161,9 @@ It consists of a vector of primary index/name map pairs in order of increasing i
 Each primary index must be unique, and likewise each secondary index per individual name map.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{indirect name map} &amp; \href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnamemap}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{indirect name map} &amp; \href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnamemap}} &amp;::=&amp;
   \href{../binary/conventions.html#binary-vec}{\mathtt{vec}}(\href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnameassoc}}) \\
-\def\mathdef79#1{{}}\mathdef79{indirect name association} &amp; \href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnameassoc}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{indirect name association} &amp; \href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnameassoc}} &amp;::=&amp;
   \href{../binary/modules.html#binary-index}{\mathtt{idx}}~\href{../appendix/custom.html#binary-namemap}{\mathtt{namemap}} \\
 \end{array}\end{split}\]</div>
 </section>
@@ -173,7 +173,7 @@ Each primary index must be unique, and likewise each secondary index per individ
 It simply consists of a single <a class="reference internal" href="../binary/values.html#binary-name"><span class="std std-ref">name</span></a> that is assigned to the module itself.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{module name subsection} &amp; \href{../appendix/custom.html#binary-modulenamesec}{\mathtt{modulenamesubsec}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{module name subsection} &amp; \href{../appendix/custom.html#binary-modulenamesec}{\mathtt{modulenamesubsec}} &amp;::=&amp;
   \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_0(\href{../binary/values.html#binary-name}{\mathtt{name}}) \\
 \end{array}\end{split}\]</div>
 </section>
@@ -183,7 +183,7 @@ It simply consists of a single <a class="reference internal" href="../binary/val
 It consists of a <a class="reference internal" href="#binary-namemap"><span class="std std-ref">name map</span></a> assigning function names to <a class="reference internal" href="../syntax/modules.html#syntax-funcidx"><span class="std std-ref">function indices</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{function name subsection} &amp; \href{../appendix/custom.html#binary-funcnamesec}{\mathtt{funcnamesubsec}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{function name subsection} &amp; \href{../appendix/custom.html#binary-funcnamesec}{\mathtt{funcnamesubsec}} &amp;::=&amp;
   \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_1(\href{../appendix/custom.html#binary-namemap}{\mathtt{namemap}}) \\
 \end{array}\end{split}\]</div>
 </section>
@@ -193,7 +193,7 @@ It consists of a <a class="reference internal" href="#binary-namemap"><span clas
 It consists of an <a class="reference internal" href="#binary-indirectnamemap"><span class="std std-ref">indirect name map</span></a> assigning local names to <a class="reference internal" href="../syntax/modules.html#syntax-localidx"><span class="std std-ref">local indices</span></a> grouped by <a class="reference internal" href="../syntax/modules.html#syntax-funcidx"><span class="std std-ref">function indices</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{local name subsection} &amp; \href{../appendix/custom.html#binary-localnamesec}{\mathtt{localnamesubsec}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{local name subsection} &amp; \href{../appendix/custom.html#binary-localnamesec}{\mathtt{localnamesubsec}} &amp;::=&amp;
   \href{../appendix/custom.html#binary-namesubsection}{\mathtt{namesubsection}}_2(\href{../appendix/custom.html#binary-indirectnamemap}{\mathtt{indirectnamemap}}) \\
 \end{array}\end{split}\]</div>
 </section>
@@ -210,8 +210,8 @@ At most one name annotation may be given per binding.</p>
 <p>All name annotations have the following format:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{name annotation} &amp; \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} &amp;::=&amp;
-  \def\mathdef120#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef120{(&#64;name}~\href{../text/values.html#text-string}{\mathtt{string}}~\def\mathdef121#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef121{)} \\
+\def\mathdef83#1{{}}\mathdef83{name annotation} &amp; \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} &amp;::=&amp;
+  \def\mathdef124#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef124{(&#64;name}~\href{../text/values.html#text-string}{\mathtt{string}}~\def\mathdef125#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef125{)} \\
 \end{array}\end{split}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -221,42 +221,42 @@ Names need not be unique.</p>
 <section id="text-modulenameannot">
 <span id="index-7"></span><span id="id1"></span><h3>Module Names<a class="headerlink" href="#text-modulenameannot" title="Permalink to this heading">¶</a></h3>
 <p>A <em>module name annotation</em> must be placed on a <a class="reference internal" href="../text/modules.html#text-module"><span class="std std-ref">module</span></a> definition,
-directly after the <span class="math notranslate nohighlight">\(\def\mathdef122#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef122{module}\)</span> keyword, or if present, after the following module <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.</p>
+directly after the <span class="math notranslate nohighlight">\(\def\mathdef126#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef126{module}\)</span> keyword, or if present, after the following module <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{module name annotation} &amp; \href{../appendix/custom.html#text-modulenameannot}{\mathtt{modulenameannot}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{module name annotation} &amp; \href{../appendix/custom.html#text-modulenameannot}{\mathtt{modulenameannot}} &amp;::=&amp;
   \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} \\
 \end{array}\end{split}\]</div>
 </section>
 <section id="text-funcnameannot">
 <span id="index-8"></span><span id="id2"></span><h3>Function Names<a class="headerlink" href="#text-funcnameannot" title="Permalink to this heading">¶</a></h3>
 <p>A <em>function name annotation</em> must be placed on a <a class="reference internal" href="../text/modules.html#text-func"><span class="std std-ref">function</span></a> definition or function <a class="reference internal" href="../text/modules.html#text-import"><span class="std std-ref">import</span></a>,
-directly after the <span class="math notranslate nohighlight">\(\def\mathdef123#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef123{func}\)</span> keyword, or if present, after the following function <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a> or.</p>
+directly after the <span class="math notranslate nohighlight">\(\def\mathdef127#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef127{func}\)</span> keyword, or if present, after the following function <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a> or.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{function name annotation} &amp; \href{../appendix/custom.html#text-funcnameannot}{\mathtt{funcnameannot}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{function name annotation} &amp; \href{../appendix/custom.html#text-funcnameannot}{\mathtt{funcnameannot}} &amp;::=&amp;
   \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} \\
 \end{array}\end{split}\]</div>
 </section>
 <section id="parameter-names">
 <span id="text-paramnameannot"></span><span id="index-9"></span><h3>Parameter Names<a class="headerlink" href="#parameter-names" title="Permalink to this heading">¶</a></h3>
 <p>A <em>parameter name annotation</em> must be placed on a <a class="reference internal" href="../text/types.html#text-param"><span class="std std-ref">parameter</span></a> declaration,
-directly after the <span class="math notranslate nohighlight">\(\def\mathdef124#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef124{param}\)</span> keyword, or if present, after the following parameter <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
+directly after the <span class="math notranslate nohighlight">\(\def\mathdef128#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef128{param}\)</span> keyword, or if present, after the following parameter <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
 It may only be placed on a declaration that declares exactly one parameter.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{parameter name annotation} &amp; \href{../appendix/custom.html#text-paramnameannot}{\mathtt{paramnameannot}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{parameter name annotation} &amp; \href{../appendix/custom.html#text-paramnameannot}{\mathtt{paramnameannot}} &amp;::=&amp;
   \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} \\
 \end{array}\end{split}\]</div>
 </section>
 <section id="text-localnameannot">
 <span id="index-10"></span><span id="id3"></span><h3>Local Names<a class="headerlink" href="#text-localnameannot" title="Permalink to this heading">¶</a></h3>
 <p>A <em>local name annotation</em> must be placed on a <a class="reference internal" href="../text/types.html#text-param"><span class="std std-ref">local</span></a> declaration,
-directly after the <span class="math notranslate nohighlight">\(\def\mathdef125#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef125{local}\)</span> keyword, or if present, after the following local <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
+directly after the <span class="math notranslate nohighlight">\(\def\mathdef129#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef129{local}\)</span> keyword, or if present, after the following local <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
 It may only be placed on a declaration that declares exactly one local.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{local name annotation} &amp; \href{../appendix/custom.html#text-localnameannot}{\mathtt{localnameannot}} &amp;::=&amp;
+\def\mathdef83#1{{}}\mathdef83{local name annotation} &amp; \href{../appendix/custom.html#text-localnameannot}{\mathtt{localnameannot}} &amp;::=&amp;
   \href{../appendix/custom.html#text-nameannot}{\mathtt{nameannot}} \\
 \end{array}\end{split}\]</div>
 </section>
@@ -267,30 +267,30 @@ It may only be placed on a declaration that declares exactly one local.</p>
 Their id is <span class="math notranslate nohighlight">\(\mathtt{&#64;custom}\)</span>.
 By generating custom annotations, tools converting between <a class="reference internal" href="../binary/index.html#binary"><span class="std std-ref">binary format</span></a> and <a class="reference internal" href="../text/index.html#text"><span class="std std-ref">text format</span></a> can maintain and round-trip the content of custom sections even when they do not recognize them.</p>
 <p>Custom annotations must be placed inside a <a class="reference internal" href="../text/modules.html#text-module"><span class="std std-ref">module</span></a> definition.
-They must occur anywhere after the <span class="math notranslate nohighlight">\(\def\mathdef126#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef126{module}\)</span> keyword, or if present, after the following module <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
+They must occur anywhere after the <span class="math notranslate nohighlight">\(\def\mathdef130#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef130{module}\)</span> keyword, or if present, after the following module <a class="reference internal" href="../text/values.html#text-id"><span class="std std-ref">identifier</span></a>.
 They must not be nested into other constructs.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{llclll}
-\def\mathdef79#1{{}}\mathdef79{custom annotation} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{customannot}} &amp;::=&amp;
-  \def\mathdef127#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef127{(&#64;custom}~~\href{../text/values.html#text-string}{\mathtt{string}}~~\href{../appendix/custom.html#text-customannot}{\mathtt{customplace}}^?~~\href{../text/modules.html#text-datastring}{\mathtt{datastring}}~~\def\mathdef128#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef128{)} \\
-\def\mathdef79#1{{}}\mathdef79{custom placement} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{customplace}} &amp;::=&amp;
-  \def\mathdef129#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef129{(}~\def\mathdef130#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef130{before}~~\def\mathdef131#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef131{first}~\def\mathdef132#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef132{)} \\ &amp;&amp;|&amp;
-  \def\mathdef133#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef133{(}~\def\mathdef134#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef134{before}~~\href{../appendix/custom.html#text-customannot}{\mathtt{sec}}~\def\mathdef135#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef135{)} \\ &amp;&amp;|&amp;
-  \def\mathdef136#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef136{(}~\def\mathdef137#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef137{after}~~\href{../appendix/custom.html#text-customannot}{\mathtt{sec}}~\def\mathdef138#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef138{)} \\ &amp;&amp;|&amp;
-  \def\mathdef139#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef139{(}~\def\mathdef140#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef140{after}~~\def\mathdef141#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef141{last}~\def\mathdef142#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef142{)} \\
-\def\mathdef79#1{{}}\mathdef79{section} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{sec}} &amp;::=&amp;
-  \def\mathdef143#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef143{type} \\ &amp;&amp;|&amp;
-  \def\mathdef144#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef144{import} \\ &amp;&amp;|&amp;
-  \def\mathdef145#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef145{func} \\ &amp;&amp;|&amp;
-  \def\mathdef146#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef146{table} \\ &amp;&amp;|&amp;
-  \def\mathdef147#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef147{memory} \\ &amp;&amp;|&amp;
-  \def\mathdef148#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef148{global} \\ &amp;&amp;|&amp;
-  \def\mathdef149#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef149{export} \\ &amp;&amp;|&amp;
-  \def\mathdef150#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef150{start} \\ &amp;&amp;|&amp;
-  \def\mathdef151#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef151{elem} \\ &amp;&amp;|&amp;
-  \def\mathdef152#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef152{code} \\ &amp;&amp;|&amp;
-  \def\mathdef153#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef153{data} \\ &amp;&amp;|&amp;
-  \def\mathdef154#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef154{datacount} \\
+\def\mathdef83#1{{}}\mathdef83{custom annotation} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{customannot}} &amp;::=&amp;
+  \def\mathdef131#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef131{(&#64;custom}~~\href{../text/values.html#text-string}{\mathtt{string}}~~\href{../appendix/custom.html#text-customannot}{\mathtt{customplace}}^?~~\href{../text/modules.html#text-datastring}{\mathtt{datastring}}~~\def\mathdef132#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef132{)} \\
+\def\mathdef83#1{{}}\mathdef83{custom placement} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{customplace}} &amp;::=&amp;
+  \def\mathdef133#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef133{(}~\def\mathdef134#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef134{before}~~\def\mathdef135#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef135{first}~\def\mathdef136#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef136{)} \\ &amp;&amp;|&amp;
+  \def\mathdef137#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef137{(}~\def\mathdef138#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef138{before}~~\href{../appendix/custom.html#text-customannot}{\mathtt{sec}}~\def\mathdef139#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef139{)} \\ &amp;&amp;|&amp;
+  \def\mathdef140#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef140{(}~\def\mathdef141#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef141{after}~~\href{../appendix/custom.html#text-customannot}{\mathtt{sec}}~\def\mathdef142#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef142{)} \\ &amp;&amp;|&amp;
+  \def\mathdef143#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef143{(}~\def\mathdef144#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef144{after}~~\def\mathdef145#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef145{last}~\def\mathdef146#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef146{)} \\
+\def\mathdef83#1{{}}\mathdef83{section} &amp; \href{../appendix/custom.html#text-customannot}{\mathtt{sec}} &amp;::=&amp;
+  \def\mathdef147#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef147{type} \\ &amp;&amp;|&amp;
+  \def\mathdef148#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef148{import} \\ &amp;&amp;|&amp;
+  \def\mathdef149#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef149{func} \\ &amp;&amp;|&amp;
+  \def\mathdef150#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef150{table} \\ &amp;&amp;|&amp;
+  \def\mathdef151#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef151{memory} \\ &amp;&amp;|&amp;
+  \def\mathdef152#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef152{global} \\ &amp;&amp;|&amp;
+  \def\mathdef153#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef153{export} \\ &amp;&amp;|&amp;
+  \def\mathdef154#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef154{start} \\ &amp;&amp;|&amp;
+  \def\mathdef155#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef155{elem} \\ &amp;&amp;|&amp;
+  \def\mathdef156#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef156{code} \\ &amp;&amp;|&amp;
+  \def\mathdef157#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef157{data} \\ &amp;&amp;|&amp;
+  \def\mathdef158#1{\mbox{‘}\mathtt{#1}\mbox{’}}\mathdef158{datacount} \\
 \end{array}\end{split}\]</div>
 <p>The first <a class="reference internal" href="../text/values.html#text-string"><span class="std std-ref">string</span></a> in a custom annotation denotes the name of the custom section it represents.
 The remaining strings collectively represent the section’s payload data, written as a <a class="reference internal" href="../text/modules.html#text-datastring"><span class="std std-ref">data string</span></a>, which can be split up into a possibly empty sequence of individual string literals (similar to <a class="reference internal" href="../text/modules.html#text-data"><span class="std std-ref">data segments</span></a>).</p>
